@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "submit_moderation_task.request.json",
+  "title": "SubmitModerationTaskRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["request_id", "review"],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_id", "text"],
+      "properties": {
+        "review_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "rating": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "images": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "maxLength": 2048
+              },
+              "base64": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mime_type": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "anyOf": [
+              {"required": ["url"]},
+              {"required": ["base64"]}
+            ]
+          }
+        }
+      }
+    }
+  }
+}

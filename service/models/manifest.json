@@ -1,0 +1,65 @@
+{
+  "model_set_version": "1.0.0",
+  "topics": {
+    "01_toxicity_threats": {
+      "artifact": "01_toxicity_threats.joblib",
+      "checksum": "ec7dd0a75b33a8f4da9e14c27350ca588f1d9680380c78b36dfbbe1013ff2fec",
+      "review_threshold": 0.62,
+      "reject_threshold": 0.86
+    },
+    "02_pii": {
+      "artifact": "02_pii.joblib",
+      "checksum": "b1dcc41085d90984e5920adc8c5528bef8b52d1c2d3fd3b4d991e0377942fdd1",
+      "review_threshold": 0.6,
+      "reject_threshold": 0.84
+    },
+    "03_spam_ads": {
+      "artifact": "03_spam_ads.joblib",
+      "checksum": "0486f6d0e1b2ba717720adce25efcbc5cbb44b156ee90466e51501bdcea3cdae",
+      "review_threshold": 0.58,
+      "reject_threshold": 0.83
+    },
+    "04_fraud_manipulation": {
+      "artifact": "04_fraud_manipulation.joblib",
+      "checksum": "4b2a992123b86d5fd03a8c832e5361a22842fe862e54c68104cca36be24b0bcd",
+      "review_threshold": 0.6,
+      "reject_threshold": 0.85
+    },
+    "05_adult_shocking": {
+      "artifact": "05_adult_shocking.joblib",
+      "checksum": "aabfb1a386360e7e6fa2e64f9a30d247ab23423f27893302fde79b8d7af7296f",
+      "review_threshold": 0.62,
+      "reject_threshold": 0.86
+    },
+    "06_illegal_content": {
+      "artifact": "06_illegal_content.joblib",
+      "checksum": "8ffedbd21142605ee01742c563f82ae6c13c41e68dba51d5db5b9e5c977a119f",
+      "review_threshold": 0.6,
+      "reject_threshold": 0.85
+    },
+    "07_relevance_usefulness": {
+      "artifact": "07_relevance_usefulness.joblib",
+      "checksum": "a8e4b5703be22bc19cc124d1092afcb80126c91b5b4c58afcb1777e9938d47f9",
+      "review_threshold": 0.57,
+      "reject_threshold": 0.82
+    },
+    "08_multimodal_consistency": {
+      "artifact": "08_multimodal_consistency.joblib",
+      "checksum": "0582ddd2c52b86a37157ecc82878bd96469f12842c9d979fb9237ea0610bbf37",
+      "review_threshold": 0.6,
+      "reject_threshold": 0.85
+    },
+    "09_evasion_anomalies": {
+      "artifact": "09_evasion_anomalies.joblib",
+      "checksum": "69c3a436e3734b2cdec4edf29bc2e9c225b593824956f3fb6ee359ff9cef690f",
+      "review_threshold": 0.58,
+      "reject_threshold": 0.84
+    },
+    "10_legal_reputation": {
+      "artifact": "10_legal_reputation.joblib",
+      "checksum": "63b3285fe54657383351f43e030d2b9b3f11d2ecd4ee9b22761e3396459f70ac",
+      "review_threshold": 0.6,
+      "reject_threshold": 0.85
+    }
+  }
+}

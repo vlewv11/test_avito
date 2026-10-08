@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "get_moderation_task_result.response.json",
+  "title": "GetModerationTaskResultResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "status"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "status": {
+      "type": "string",
+      "enum": ["QUEUED", "IN_PROGRESS", "COMPLETED", "FAILED", "EXPIRED"]
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["APPROVE", "REVIEW", "REJECT"]
+    },
+    "primary_reason_code": {
+      "type": ["string", "null"],
+      "maxLength": 128
+    },
+    "secondary_reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "uniqueItems": true
+    },
+    "topic_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["topic_id", "decision", "reason_codes", "confidence"],
+        "properties": {
+          "topic_id": {
+            "type": "string",
+            "pattern": "^[0-9]{2}_[a-z_]+$"
+          },
+          "decision": {
+            "type": "string",
+            "enum": ["APPROVE", "REVIEW", "REJECT"]
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "uniqueItems": true
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "error_code": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "error_message": {
+      "type": "string",
+      "maxLength": 2000
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "COMPLETED"}}
+      },
+      "then": {
+        "required": [
+          "decision",
+          "primary_reason_code",
+          "secondary_reason_codes",
+          "topic_results",
+          "finished_at"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {"status": {"const": "FAILED"}}
+      },
+      "then": {
+        "required": ["error_code", "error_message"]
+      }
+    }
+  ]
+}

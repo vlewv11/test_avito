@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "submit_moderation_task.response.json",
+  "title": "SubmitModerationTaskResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "status", "accepted_at"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "status": {
+      "type": "string",
+      "const": "IN_PROGRESS"
+    },
+    "accepted_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
